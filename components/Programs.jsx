@@ -28,7 +28,7 @@ const mobilePrograms = [
 
 export default function Programs() {
   return (
-    <section className="w-full bg-[#F8F6F2] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-[#f8f6f26f] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-14">
@@ -228,7 +228,7 @@ export default function Programs() {
         <div className="absolute right-0 opacity-20 scale-90">
 
           <img
-            src="/event-side.png"
+            src="/event-side.jpg"
             alt="Preview"
             className="w-[220px] h-[420px] object-cover rounded-2xl"
           />

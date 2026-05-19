@@ -31,8 +31,7 @@ export default function Practice() {
     <section className="w-full bg-[#F0EADE80] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
-
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
         <div>
 
           <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-xs mb-4">
