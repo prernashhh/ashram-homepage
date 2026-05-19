@@ -22,3 +22,19 @@ body {
 .programs-marquee:hover {
   animation-play-state: paused;
 }
+
+@keyframes carouselSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(40px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+
+.animate-carouselSlide {
+  animation: carouselSlide 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}

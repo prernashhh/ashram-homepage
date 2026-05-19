@@ -10,7 +10,13 @@ export default function Inspiration() {
           <img
             src="/visionary7.png"
             alt="Visionary"
-            className="w-full h-[720px] object-cover"
+            className="
+            w-full
+            aspect-[16/8]
+            min-[1570px]:aspect-[16/7.2]
+            object-cover
+            object-top
+          "
           />
 
           <div className="absolute inset-0 z-10">

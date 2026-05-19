@@ -71,7 +71,7 @@ export default function Programs() {
     ];
 
   return (
-    <section className="w-full bg-[#F8F6F2] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-[#f8f6f2b9] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
       <div className="max-w-7xl mx-auto">
 
@@ -136,8 +136,6 @@ export default function Programs() {
             </button>
 
 
-
-            {/* Arrows */}
             <div className="hidden md:flex items-center gap-4">
 
               <button
@@ -169,12 +167,24 @@ export default function Programs() {
 
 
         {/* DESKTOP CAROUSEL */}
-        <div className="hidden md:flex items-center justify-center relative">
+        <div className="hidden md:flex items-center justify-center relative overflow-hidden">
 
-          <div className="flex items-center gap-6 lg:gap-8 transition-all duration-500">
+          <div
+            key={activeIndex}
+            className="
+              flex items-center gap-6 lg:gap-8
+              animate-carouselSlide
+            "
+          >
 
             {/* LEFT PREVIEW */}
-            <div className="w-[180px] lg:w-[240px] opacity-25 scale-[0.92] transition-all duration-500">
+            <div className="
+              w-[180px] lg:w-[240px]
+              opacity-20
+              scale-[0.9]
+              blur-[1px]
+              transition-all duration-700
+            ">
 
               <div className="rounded-2xl overflow-hidden bg-[#F5F2EC]">
 
@@ -191,9 +201,19 @@ export default function Programs() {
 
 
             {/* CENTER CARD */}
-            <div className="w-full max-w-5xl bg-[#F5F2EC] rounded-2xl overflow-hidden shadow-sm grid lg:grid-cols-2">
+            <div
+              className="
+                w-full max-w-5xl
+                bg-[#F5F2EC]
+                rounded-2xl
+                overflow-hidden
+                shadow-sm
+                grid lg:grid-cols-2
+                transition-all duration-700
+                hover:shadow-xl
+              "
+            >
 
-              {/* Image */}
               <img
                 src={current.image}
                 alt={current.title}
@@ -224,9 +244,6 @@ export default function Programs() {
 
                 </div>
 
-
-
-                {/* Title */}
                 <h3
                   className="text-[#3A2A1F] text-[34px] xl:text-[42px] mb-6 leading-tight"
                   style={{
@@ -238,9 +255,6 @@ export default function Programs() {
 
                 </h3>
 
-
-
-                {/* Description */}
                 <p className="text-[#555] leading-8 mb-10 max-w-md text-sm lg:text-base">
 
                   {current.description}
@@ -249,7 +263,6 @@ export default function Programs() {
 
 
 
-                {/* Date + Time */}
                 <div className="flex gap-12 mb-10 text-sm">
 
                   <div>
@@ -263,7 +276,6 @@ export default function Programs() {
                     </p>
 
                   </div>
-
 
 
                   <div>
@@ -280,9 +292,6 @@ export default function Programs() {
 
                 </div>
 
-
-
-                {/* Button */}
                 <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition w-fit">
 
                   Learn More
@@ -296,7 +305,13 @@ export default function Programs() {
 
 
             {/* RIGHT PREVIEW */}
-            <div className="w-[180px] lg:w-[240px] opacity-25 scale-[0.92] transition-all duration-500">
+            <div className="
+              w-[180px] lg:w-[240px]
+              opacity-20
+              scale-[0.9]
+              blur-[1px]
+              transition-all duration-700
+            ">
 
               <div className="rounded-2xl overflow-hidden bg-[#F5F2EC]">
 
@@ -329,7 +344,6 @@ export default function Programs() {
               "
             >
 
-              {/* Image */}
               <img
                 src={event.image}
                 alt={event.title}
@@ -361,8 +375,6 @@ export default function Programs() {
                 </div>
 
 
-
-                {/* Title */}
                 <h3
                   className="
                     text-[#3A2A1F]
@@ -380,8 +392,6 @@ export default function Programs() {
                 </h3>
 
 
-
-                {/* Description */}
                 <p className="text-[#555] text-sm leading-8 mb-8">
 
                   {event.description}
@@ -430,8 +440,6 @@ export default function Programs() {
                 </div>
 
 
-
-                {/* Button */}
                 <div className="flex justify-center">
 
                   <button className="border border-[#6B3B22] text-[#6B3B22] px-10 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition">
