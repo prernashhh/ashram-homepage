@@ -1,4 +1,12 @@
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const cards = [
   {
@@ -24,9 +32,35 @@ const cards = [
     text: "Calming sounds and soothing vibrations to help you settle into a quieter state within.",
     image: "/sound-healing.png",
   },
+  {
+    title: "Breathwork",
+    text: "Deep breathing techniques that cultivate balance, stillness, and inner awareness.",
+    image: "/event-side.jpg",
+  },
+
+  {
+    title: "Workshops",
+    text: "Interactive sessions focused on self-growth, mindfulness, and spiritual understanding.",
+    image: "/workshop.png",
+  },
 ];
 
 export default function Practice() {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    if (currentIndex < cards.length - 4) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
   return (
     <section className="w-full bg-[#F0EADE80] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
@@ -158,66 +192,77 @@ export default function Practice() {
 
 
 
-      {/* DESKTOP GRID */}
-      <div className="hidden xl:grid grid-cols-4 gap-6">
+      {/* DESKTOP SLIDER */}
+      <div className="hidden xl:block overflow-hidden">
 
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="
-              bg-[#F7F5F2]
-              rounded-xl
-              overflow-hidden
-            "
-          >
+        <div
+          className="flex gap-6 transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * 25.5}%)`,
+          }}
+        >
 
-            <img
-              src={card.image}
-              alt={card.title}
-              className="w-full h-[320px] object-cover"
-            />
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="
+                basis-1/4
+                shrink-0
+                bg-[#F7F5F2]
+                rounded-xl
+                overflow-hidden
+              "
+            >
 
-
-
-            <div className="p-5 flex flex-col min-h-[250px]">
-
-              <h3
-                className="text-[#6B3B22] text-[34px] mb-4"
-                style={{
-                  fontFamily: "var(--font-stix)",
-                }}
-              >
-
-                {card.title}
-
-              </h3>
+              <img
+                src={card.image}
+                alt={card.title}
+                className="w-full h-[320px] object-cover"
+              />
 
 
 
-              <p className="text-[#444] text-sm leading-7 mb-8 flex-grow">
+              <div className="p-5 flex flex-col min-h-[250px]">
 
-                {card.text}
+                <h3
+                  className="text-[#6B3B22] text-[34px] mb-4"
+                  style={{
+                    fontFamily: "var(--font-stix)",
+                  }}
+                >
 
-              </p>
+                  {card.title}
+
+                </h3>
 
 
 
-              <button className="mt-auto flex items-center gap-3 text-[#6B3B22] text-sm font-medium hover:opacity-70 transition">
+                <p className="text-[#444] text-sm leading-7 mb-8 flex-grow">
 
-                Learn More
+                  {card.text}
 
-                <span >
+                </p>
 
-                  <ArrowRight size={12} />
 
-                </span>
 
-              </button>
+                <button className="mt-auto flex items-center gap-3 text-[#6B3B22] text-sm font-medium hover:opacity-70 transition">
+
+                  Learn More
+
+                  <span>
+
+                    <ArrowRight size={12} />
+
+                  </span>
+
+                </button>
+
+              </div>
 
             </div>
+          ))}
 
-          </div>
-        ))}
+        </div>
 
       </div>
 
@@ -244,7 +289,20 @@ export default function Practice() {
         {/* Desktop Arrows */}
         <div className="hidden md:flex items-center gap-4 ml-auto">
 
-          <button className="w-12 h-12 rounded-full border border-[#D5C7B0] flex items-center justify-center text-[#999] hover:bg-white transition">
+          <button
+            onClick={prevSlide}
+            disabled={currentIndex === 0}
+            className="
+              w-12 h-12 rounded-full border
+              border-[#6B3B22]
+              flex items-center justify-center
+              text-[#6B3B22]
+              hover:bg-[#6B3B22]
+              hover:text-white
+              transition
+              disabled:opacity-40
+            "
+          >
 
             <ChevronLeft size={18} />
 
@@ -252,8 +310,20 @@ export default function Practice() {
 
 
 
-          <button className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center text-[#6B3B22] hover:bg-[#6B3B22] hover:text-white transition">
-
+          <button
+            onClick={nextSlide}
+            disabled={currentIndex >= cards.length - 4}
+            className="
+              w-12 h-12 rounded-full border
+              border-[#6B3B22]
+              flex items-center justify-center
+              text-[#6B3B22]
+              hover:bg-[#6B3B22]
+              hover:text-white
+              transition
+              disabled:opacity-40
+            "
+          >
             <ChevronRight size={18} />
 
           </button>

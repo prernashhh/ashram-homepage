@@ -14,13 +14,13 @@ export default function Inspiration() {
           />
 
           <div className="absolute inset-0 z-10">
-            <div className="px-10 lg:px-16 pt-10 lg:pt-16 max-w-2xl">
+            <div className="px-10 lg:px-20 pt-10 lg:pt-16 max-w-3xl">
               <p className="uppercase tracking-[3px] text-[#2A2A2A] text-xs mb-4">
                 The Inspiration
               </p>
 
               <h2
-                className="text-[#6B3B22] text-[42px] lg:text-[52px] leading-tight font-medium mb-8"
+                className="text-[#6B3B22] text-[42px] lg:text-[50px] leading-tight font-medium mb-8"
                 style={{
                   fontFamily: "var(--font-stix)",
                 }}
@@ -30,17 +30,17 @@ export default function Inspiration() {
                 Rooted In <i>Compassion</i>
               </h2>
 
-              <div className="space-y-3 max-w-[430px]">
-                <div className="bg-white/50 w-xs backdrop-blur-md border border-white/20 p-4 rounded-md shadow-md">
-                  <p className="text-[13px] leading-6 text-[#333]">
+              <div className="space-y-3 max-w-[490px]">
+                <div className="bg-white/40 backdrop-blur-md border border-white/20 p-5 rounded-xl shadow-md">
+                  <p className="text-[18px] leading-6 text-[#333]">
                     <span className="font-semibold">Shrimad Rajchandraji</span>{" "}
                     was a self-realized saint whose teachings and lived example
                     offer a roadmap to inner purification and truth.
                   </p>
                 </div>
 
-                <div className="bg-white/50 w-xs backdrop-blur-md border border-white/20 p-4 rounded-md shadow-md">
-                  <p className="text-[13px] leading-6 text-[#333]">
+                <div className="bg-white/40 backdrop-blur-md border border-white/20 p-5 rounded-xl shadow-md">
+                  <p className="text-[18px] leading-6 text-[#333]">
                     <span className="font-semibold">
                       Pujya Gurudevshri Rakeshji
                     </span>{" "}
@@ -52,7 +52,7 @@ export default function Inspiration() {
                 </div>
               </div>
 
-              <button className="group mt-6 border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-4 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">
+              <button className="group mt-6 border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-4 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/50 backdrop-blur-sm">
                 About Our Guides
 
                 <span className="w-7 h-7 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
@@ -109,11 +109,11 @@ export default function Inspiration() {
               </p>
             </div>
 
-            <button className="group mt-6 w-2xs border border-[#6B3B22] text-[#6B3B22] px-6 py-4 rounded-full text-[18px] font-medium flex items-center justify-between hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">
+            <button className="group mt-6 w-3xs border-[#6B3B22] text-[#6B3B22] px-4 py-2 rounded-full text-[14px] font-medium flex items-center justify-between hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">
               About Our Guides
 
-              <span className="w-12 h-12 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
-                <ArrowRight size={22} />
+              <span className="w-8 h-8 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
+                <ArrowRight size={16} />
               </span>
             </button>
           </div>

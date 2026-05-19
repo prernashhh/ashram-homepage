@@ -1,328 +1,166 @@
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+"use client";
 
-const mobilePrograms = [
+import { useState } from "react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+
+const events = [
   {
+    image: "/event-main.png",
+    title: "Guru Purnima Shibir",
+    description:
+      "A transformative three-day immersion in silence, meditation, and self-reflection. Disconnect from the noise and reconnect with your inner stillness.",
     date: "April 26 - April 28",
-    title: "Yoga & Mindfulness Workshop",
-    text: "A comprehensive three-day workshop combining traditional yoga practices with modern mindfulness techniques for holistic wellbeing.",
+    time: "7AM - 6PM",
   },
 
   {
-    date: "April 26 - April 28",
-    title: "Yoga & Mindfulness Workshop",
-    text: "A comprehensive three-day workshop combining traditional yoga practices with modern mindfulness techniques for holistic wellbeing.",
+    image: "/event-side.jpg",
+    title: "Meditation Retreat",
+    description:
+      "Reconnect with inner stillness through guided meditation and mindful awareness practices in nature.",
+    date: "May 12 - May 15",
+    time: "8AM - 5PM",
   },
 
   {
-    date: "April 26 - April 28",
-    title: "Yoga & Mindfulness Workshop",
-    text: "A comprehensive three-day workshop combining traditional yoga practices with modern mindfulness techniques for holistic wellbeing.",
+    image: "/yoga.png",
+    title: "Yoga & Wellness",
+    description:
+      "Gentle yoga sessions designed to harmonize breath, body, and awareness in a peaceful environment.",
+    date: "June 2 - June 4",
+    time: "6AM - 4PM",
   },
 
   {
-    date: "April 26 - April 28",
-    title: "Yoga & Mindfulness Workshop",
-    text: "A comprehensive three-day workshop combining traditional yoga practices with modern mindfulness techniques for holistic wellbeing.",
+    image: "/sound-healing.png",
+    title: "Sacred Sound Healing",
+    description:
+      "Experience calming vibrations and restorative sound journeys that settle the mind and uplift the spirit.",
+    date: "July 10 - July 12",
+    time: "5PM - 9PM",
   },
 ];
 
 export default function Programs() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % events.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex(
+      (prev) => (prev - 1 + events.length) % events.length
+    );
+  };
+
+  const current = events[activeIndex];
+
+  const prev =
+    events[
+      (activeIndex - 1 + events.length) % events.length
+    ];
+
+  const next =
+    events[
+      (activeIndex + 1) % events.length
+    ];
+
   return (
-    <section className="w-full bg-[#f8f6f26f] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-[#F8F6F2] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-14">
+      <div className="max-w-7xl mx-auto">
 
-        <div>
+        {/* TOP */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
 
-          <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-xs mb-4">
+          {/* Left */}
+          <div>
 
-            The Programs
+            <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-xs mb-4">
 
-          </p>
-
-
-
-          <h2
-            className="
-              text-[#6B3B22]
-              text-[34px]
-              md:text-[56px]
-              leading-tight
-              font-medium
-              mb-4
-            "
-            style={{
-              fontFamily: "var(--font-stix)",
-            }}
-          >
-
-            Join an <i>Upcoming Event</i>
-
-          </h2>
-
-
-
-          <p className="text-[#444] text-sm md:text-base">
-
-            Register and mark your calendar for an enriching experience
-
-          </p>
-
-        </div>
-
-
-
-        {/* Desktop Controls */}
-        <div className="hidden md:flex flex-col items-end gap-8">
-
-          <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-[#6B3B22] hover:text-white transition">
-
-            View All Events
-
-            <ArrowRight size={16} />
-
-          </button>
-
-
-
-          <div className="flex items-center gap-4">
-
-            <button className="w-12 h-12 rounded-full border border-[#D5C7B0] flex items-center justify-center text-[#999] hover:bg-white transition">
-
-              <ChevronLeft size={18} />
-
-            </button>
-
-
-
-            <button className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center text-[#6B3B22] hover:bg-[#6B3B22] hover:text-white transition">
-
-              <ChevronRight size={18} />
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      {/* DESKTOP FEATURED CARD */}
-      <div className="hidden md:flex items-center justify-center relative">
-
-        {/* Side Preview Left */}
-        <div className="absolute left-0 opacity-20 scale-90">
-
-          <div className="w-[220px] h-[420px] bg-white rounded-2xl"></div>
-
-        </div>
-
-
-
-        {/* Main Card */}
-        <div className="w-full max-w-5xl bg-[#F5F2EC] rounded-2xl overflow-hidden shadow-sm grid grid-cols-2 z-10">
-
-          {/* Image */}
-          <img
-            src="/event-main.png"
-            alt="Event"
-            className="w-full h-full object-cover"
-          />
-
-
-
-          {/* Content */}
-          <div className="p-12 flex flex-col justify-center">
-
-            <div className="flex items-center gap-3 mb-8">
-
-              <span className="bg-[#6B3B22] text-white text-[10px] px-4 py-2 rounded-full uppercase tracking-wide">
-
-                Featured Event
-
-              </span>
-
-
-
-              <span className="border border-[#D5C7B0] text-[#6B3B22] text-[10px] px-4 py-2 rounded-full uppercase tracking-wide">
-
-                Pujya Gurudevshri
-
-              </span>
-
-            </div>
-
-
-
-            <h3
-              className="text-[#3A2A1F] text-[42px] mb-6"
-              style={{
-                fontFamily: "var(--font-stix)",
-              }}
-            >
-
-              Guru Purnima Shibir
-
-            </h3>
-
-
-
-            <p className="text-[#555] leading-8 mb-10 max-w-md">
-
-              A transformative three-day immersion in silence,
-              meditation, and self-reflection. Disconnect from
-              the noise and reconnect with your inner stillness.
+              The Programs
 
             </p>
 
 
 
-            <div className="flex gap-12 mb-10 text-sm">
-
-              <div>
-
-                <p className="uppercase text-[#999] text-xs mb-2">
-                  Date
-                </p>
-
-                <p className="text-[#444]">
-                  April 26 - April 28
-                </p>
-
-              </div>
-
-
-
-              <div>
-
-                <p className="uppercase text-[#999] text-xs mb-2">
-                  Time
-                </p>
-
-                <p className="text-[#444]">
-                  7AM - 6PM
-                </p>
-
-              </div>
-
-            </div>
-
-
-
-            <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition w-fit">
-
-              Learn More
-
-            </button>
-
-          </div>
-
-        </div>
-
-
-
-        {/* Side Preview Right */}
-        <div className="absolute right-0 opacity-20 scale-90">
-
-          <img
-            src="/event-side.jpg"
-            alt="Preview"
-            className="w-[220px] h-[420px] object-cover rounded-2xl"
-          />
-
-        </div>
-
-      </div>
-
-
-
-      {/* MOBILE VIEW */}
-      <div className="md:hidden">
-
-        {/* Featured Card */}
-        <div className="bg-[#F5F2EC] rounded-xl overflow-hidden mb-10">
-
-          <img
-            src="/event-main.png"
-            alt="Event"
-            className="w-full h-[320px] object-cover"
-          />
-
-
-
-          <div className="p-6">
-
-            <span className="bg-[#C8B08A] text-white text-[10px] px-4 py-2 rounded-full uppercase tracking-wide">
-
-              Featured Event
-
-            </span>
-
-
-
-            <h3
-              className="text-[#3A2A1F] text-[36px] mt-6 mb-5"
+            <h2
+              className="
+                text-[#6B3B22]
+                text-[36px]
+                md:text-[42px]
+                xl:text-[58px]
+                leading-tight
+                font-medium
+                mb-5
+              "
               style={{
                 fontFamily: "var(--font-stix)",
               }}
             >
 
-              Guru Purnima Shibir
+              Join an <i>Upcoming Event</i>
 
-            </h3>
+            </h2>
 
 
 
-            <p className="text-[#555] leading-8 text-sm mb-8">
+            <p className="text-[#555] text-sm md:text-base">
 
-              A transformative three-day immersion in silence,
-              meditation, and self-reflection. Disconnect from
-              the noise and reconnect with your inner stillness.
+              Register and mark your calendar for an enriching experience
 
             </p>
 
-
-
-            <div className="flex gap-8 mb-8 text-sm">
-
-              <div>
-
-                <p className="uppercase text-[#999] text-[10px] mb-2">
-                  Date
-                </p>
-
-                <p className="text-[#444] text-xs">
-                  July 2026
-                </p>
-
-              </div>
+          </div>
 
 
 
-              <div>
+          {/* Right */}
+          <div className="flex items-center justify-between md:flex-col md:items-end gap-6">
 
-                <p className="uppercase text-[#999] text-[10px] mb-2">
-                  Time
-                </p>
+            <button className="group border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-4 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white">
 
-                <p className="text-[#444] text-xs">
-                  Fri 6PM - Sun 12 PM
-                </p>
+              View All Events
 
-              </div>
+              <span className="w-7 h-7 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
 
-            </div>
+                <ArrowRight size={14} />
 
-
-
-            <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition">
-
-              Learn More
+              </span>
 
             </button>
+
+
+
+            {/* Arrows */}
+            <div className="hidden md:flex items-center gap-4">
+
+              <button
+                onClick={prevSlide}
+                className="w-12 h-12 rounded-full border border-[#C9B8A2] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
+              >
+
+                <ChevronLeft size={20} />
+
+              </button>
+
+
+
+              <button
+                onClick={nextSlide}
+                className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
+              >
+
+                <ChevronRight size={20} />
+
+              </button>
+
+            </div>
 
           </div>
 
@@ -330,51 +168,57 @@ export default function Programs() {
 
 
 
-        {/* Mobile List */}
-        <div className="space-y-12">
+        {/* DESKTOP CAROUSEL */}
+        <div className="hidden md:flex items-center justify-center relative">
 
-          {mobilePrograms.map((program, index) => (
-            <div key={index}>
+          <div className="flex items-center gap-6 lg:gap-8 transition-all duration-500">
 
-              <p className="text-[#444] text-sm mb-6">
+            {/* LEFT PREVIEW */}
+            <div className="w-[180px] lg:w-[240px] opacity-25 scale-[0.92] transition-all duration-500">
 
-                {program.date}
+              <div className="rounded-2xl overflow-hidden bg-[#F5F2EC]">
 
-              </p>
+                <img
+                  src={prev.image}
+                  alt={prev.title}
+                  className="w-full h-[420px] object-cover"
+                />
 
+              </div>
 
-
-              <h4 className="text-[#333] text-[32px] mb-5">
-
-                {program.title}
-
-              </h4>
-
-
-
-              <p className="text-[#666] leading-8 text-sm mb-6">
-
-                {program.text}
-
-              </p>
+            </div>
 
 
 
-              <div className="flex items-center justify-between">
+            {/* CENTER CARD */}
+            <div className="w-full max-w-5xl bg-[#F5F2EC] rounded-2xl overflow-hidden shadow-sm grid lg:grid-cols-2">
 
-                <div className="flex gap-3">
+              {/* Image */}
+              <img
+                src={current.image}
+                alt={current.title}
+                className="w-full h-full object-cover"
+              />
 
-                  <span className="border border-[#8A4D3B] text-[#8A4D3B] px-5 py-2 rounded-full text-xs">
 
-                    Yoga
+
+              {/* Content */}
+              <div className="p-8 lg:p-12 flex flex-col justify-center">
+
+                {/* Tags */}
+                <div className="flex items-center gap-3 mb-8 flex-wrap">
+
+                  <span className="bg-[#6B3B22] text-white text-[10px] px-4 py-2 rounded-full uppercase tracking-wide">
+
+                    Featured Event
 
                   </span>
 
 
 
-                  <span className="border border-[#8A4D3B] text-[#8A4D3B] px-5 py-2 rounded-full text-xs">
+                  <span className="border border-[#D5C7B0] text-[#6B3B22] text-[10px] px-4 py-2 rounded-full uppercase tracking-wide">
 
-                    Meditation
+                    Pujya Gurudevshri
 
                   </span>
 
@@ -382,11 +226,221 @@ export default function Programs() {
 
 
 
-                <button className="w-9 h-9 rounded-full border border-[#D5C7B0] flex items-center justify-center text-[#8A4D3B]">
+                {/* Title */}
+                <h3
+                  className="text-[#3A2A1F] text-[34px] xl:text-[42px] mb-6 leading-tight"
+                  style={{
+                    fontFamily: "var(--font-stix)",
+                  }}
+                >
 
-                  <ArrowRight size={14} />
+                  {current.title}
+
+                </h3>
+
+
+
+                {/* Description */}
+                <p className="text-[#555] leading-8 mb-10 max-w-md text-sm lg:text-base">
+
+                  {current.description}
+
+                </p>
+
+
+
+                {/* Date + Time */}
+                <div className="flex gap-12 mb-10 text-sm">
+
+                  <div>
+
+                    <p className="uppercase text-[#999] text-xs mb-2">
+                      Date
+                    </p>
+
+                    <p className="text-[#444]">
+                      {current.date}
+                    </p>
+
+                  </div>
+
+
+
+                  <div>
+
+                    <p className="uppercase text-[#999] text-xs mb-2">
+                      Time
+                    </p>
+
+                    <p className="text-[#444]">
+                      {current.time}
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+
+                {/* Button */}
+                <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition w-fit">
+
+                  Learn More
 
                 </button>
+
+              </div>
+
+            </div>
+
+
+
+            {/* RIGHT PREVIEW */}
+            <div className="w-[180px] lg:w-[240px] opacity-25 scale-[0.92] transition-all duration-500">
+
+              <div className="rounded-2xl overflow-hidden bg-[#F5F2EC]">
+
+                <img
+                  src={next.image}
+                  alt={next.title}
+                  className="w-full h-[420px] object-cover"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* MOBILE CARDS */}
+        <div className="md:hidden flex flex-col gap-8">
+
+          {events.map((event, index) => (
+            <div
+              key={index}
+              className="
+                w-full
+                bg-[#F5F2EC]
+                rounded-none
+                overflow-hidden
+              "
+            >
+
+              {/* Image */}
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-[320px] object-cover"
+              />
+
+
+
+              {/* Content */}
+              <div className="px-7 py-8">
+
+                {/* Tags */}
+                <div className="flex items-center gap-2 mb-6 flex-wrap">
+
+                  <span className="bg-[#C9A36B] text-white text-[9px] px-3 py-2 rounded-full uppercase tracking-wide">
+
+                    Featured Event
+
+                  </span>
+
+
+
+                  <span className="border border-[#D5C7B0] text-[#6B3B22] text-[9px] px-3 py-2 rounded-full uppercase tracking-wide">
+
+                    Pujya Gurudevshri
+
+                  </span>
+
+                </div>
+
+
+
+                {/* Title */}
+                <h3
+                  className="
+                    text-[#3A2A1F]
+                    text-[34px]
+                    leading-tight
+                    mb-6
+                  "
+                  style={{
+                    fontFamily: "var(--font-stix)",
+                  }}
+                >
+
+                  {event.title}
+
+                </h3>
+
+
+
+                {/* Description */}
+                <p className="text-[#555] text-sm leading-8 mb-8">
+
+                  {event.description}
+
+                </p>
+
+
+
+                {/* Date + Time */}
+                <div className="flex flex-col gap-5 mb-8">
+
+                  <div className="flex items-center gap-6">
+
+                    <p className="uppercase text-[#8B5A3C] text-[11px] tracking-[2px] min-w-[52px]">
+
+                      Date
+
+                    </p>
+
+                    <p className="text-[#444] text-sm">
+
+                      {event.date}
+
+                    </p>
+
+                  </div>
+
+
+
+                  <div className="flex items-center gap-6">
+
+                    <p className="uppercase text-[#8B5A3C] text-[11px] tracking-[2px] min-w-[52px]">
+
+                      Time
+
+                    </p>
+
+                    <p className="text-[#444] text-sm">
+
+                      {event.time}
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+
+                {/* Button */}
+                <div className="flex justify-center">
+
+                  <button className="border border-[#6B3B22] text-[#6B3B22] px-10 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition">
+
+                    Learn More
+
+                  </button>
+
+                </div>
 
               </div>
 
@@ -394,17 +448,6 @@ export default function Programs() {
           ))}
 
         </div>
-
-
-
-        {/* Mobile Button */}
-        <button className="mt-12 border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-[#6B3B22] hover:text-white transition">
-
-          View All Events
-
-          <ArrowRight size={16} />
-
-        </button>
 
       </div>
 

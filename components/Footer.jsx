@@ -22,7 +22,7 @@ const footerSections = [
   },
 
   {
-    title: "OFFERINGS",
+    title: "ACTIVITIES",
     links: [
       "Wisdom",
       "Meditation",
@@ -55,15 +55,18 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#6B2B26] text-white px-6 md:px-20 py-16 md:py-24">
+    <footer className="w-full bg-[#6B2B26] text-white px-6 md:px-12 lg:px-24 xl:px-32 py-14 md:py-20">
 
       {/* Heading */}
       <h2
         className="
           text-center
-          text-[42px]
-          md:text-[56px]
+          text-[28px]
+          md:text-[52px]
+          tracking-[2px]
+          leading-tight
           mb-14
+          whitespace-nowrap
         "
         style={{
           fontFamily: "var(--font-stix)",
@@ -76,13 +79,13 @@ export default function Footer() {
 
 
 
-      {/* Desktop Footer */}
-      <div className="hidden md:grid grid-cols-5 gap-12 mb-24">
+      {/* DESKTOP */}
+      <div className="hidden md:grid grid-cols-5 gap-10 xl:gap-16 mb-24">
 
         {footerSections.map((section, index) => (
           <div key={index}>
 
-            <h3 className="uppercase text-sm font-semibold mb-6 tracking-wide">
+            <h3 className="uppercase text-[13px] font-semibold mb-7 tracking-wide">
 
               {section.title}
 
@@ -90,7 +93,7 @@ export default function Footer() {
 
 
 
-            <ul className="space-y-4 text-sm text-white/90">
+            <ul className="space-y-5 text-[15px] text-white/90">
 
               {section.links.map((link, i) => (
                 <li
@@ -112,7 +115,7 @@ export default function Footer() {
 
 
 
-      {/* Mobile Accordion */}
+      {/* MOBILE */}
       <div className="md:hidden border-t border-white/20">
 
         {footerSections.map((section, index) => {
@@ -124,13 +127,13 @@ export default function Footer() {
               className="border-b border-white/20 py-5"
             >
 
-              {/* Accordion Header */}
+              {/* Header */}
               <button
                 onClick={() => toggleSection(section.title)}
                 className="w-full flex items-center justify-between"
               >
 
-                <span className="text-xl font-semibold">
+                <span className="text-[16px] font-semibold tracking-wide">
 
                   {section.title}
 
@@ -141,9 +144,9 @@ export default function Footer() {
                 <div className="transition-transform duration-300">
 
                   {isOpen ? (
-                    <ChevronUp size={22} />
+                    <ChevronUp size={18} />
                   ) : (
-                    <ChevronDown size={22} />
+                    <ChevronDown size={18} />
                   )}
 
                 </div>
@@ -152,7 +155,7 @@ export default function Footer() {
 
 
 
-              {/* Accordion Content */}
+              {/* Content */}
               <div
                 className={`
                   overflow-hidden
@@ -162,7 +165,7 @@ export default function Footer() {
                 `}
               >
 
-                <ul className="space-y-4 text-lg text-white/90">
+                <ul className="space-y-4 text-[15px] text-white/90 pl-1">
 
                   {section.links.map((link, i) => (
                     <li key={i}>
@@ -185,42 +188,112 @@ export default function Footer() {
 
 
       {/* Bottom */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10 text-sm text-white/90 mt-16">
+      <div className="mt-16">
 
-        {/* Address */}
-        <div className="leading-8">
+        {/* Desktop Bottom */}
+        <div className="hidden md:flex items-end justify-between text-[15px] text-white/90">
 
-          <p>Shrimad Rajchandra Ashram, USA</p>
+          {/* Address */}
+          <div className="leading-8">
 
-          <p>206 Marquis Rd, East Stroudsburg, PA 18302</p>
+            <p>Shrimad Rajchandra Ashram, USA</p>
+
+            <p>206 Marquis Rd, East Stroudsburg, PA 18302</p>
+
+          </div>
+
+
+
+          {/* Policies + Copyright */}
+          <div className="flex items-center gap-4 flex-wrap justify-end">
+
+            <p className="hover:opacity-70 cursor-pointer transition">
+
+              Terms Of Use
+
+            </p>
+
+            <span>|</span>
+
+            <p className="hover:opacity-70 cursor-pointer transition">
+
+              Privacy Policy
+
+            </p>
+
+            <span>|</span>
+
+            <p className="hover:opacity-70 cursor-pointer transition">
+
+              Accessibility
+
+            </p>
+
+            <span>|</span>
+
+            <p className="hover:opacity-70 cursor-pointer transition">
+
+              Sitemap
+
+            </p>
+
+            <span>|</span>
+
+            <p className="text-white/90 whitespace-nowrap">
+
+              © 2026 Shrimad Rajchandra Ashram, USA
+
+            </p>
+
+          </div>
 
         </div>
 
 
 
-        {/* Policies */}
-        <div className="flex flex-wrap gap-x-6 gap-y-3">
+        {/* Mobile Bottom */}
+        <div className="md:hidden pt-4">
 
-          <p>Terms Of Use</p>
+          {/* Address */}
+          <div className="text-[14px] leading-7 text-white/90 mb-7 text-left">
+            <p>Shrimad Rajchandra Ashram, USA</p>
 
-          <p>Privacy Policy</p>
+            <p>206 Marquis Rd, East Stroudsburg, PA 18302</p>
 
-          <p>Accessibility</p>
+          </div>
 
-          <p>Sitemap</p>
+
+
+          {/* Policies */}
+          <div className="flex text-center items-center gap-2 text-[12px] text-white/90 whitespace-nowrap mb-6 overflow-x-auto no-scrollbar">
+            <p>Terms Of Use</p>
+
+            <span>|</span>
+
+            <p>Privacy Policy</p>
+
+            <span>|</span>
+
+            <p>Accessibility</p>
+
+            <span>|</span>
+
+            <p>Sitemap</p>
+
+          </div>
+
+
+
+          {/* Copyright */}
+          <p className="text-[11px] text-white/80 whitespace-nowrap text-center w-full">
+
+            © Copyright 2026. Shrimad Rajchandra Ashram, USA
+
+          </p>
 
         </div>
 
       </div>
-
-
-
-      {/* Copyright */}
-      <p className="text-center text-xs text-white/70 mt-10">
-
-        © Copyright 2026. Shrimad Rajchandra Ashram, USA
-
-      </p>
 
     </footer>
   );

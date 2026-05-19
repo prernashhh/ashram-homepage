@@ -2,12 +2,12 @@ import { ArrowRight } from "lucide-react";
 
 export default function Vision() {
   return (
-    <section className="w-full bg-[#F8F6F2] px-6 md:px-20 py-20 md:py-28">
+    <section className="w-full bg-[#F8F6F2] px-6 md:px-40 py-20 md:py-28">
 
       <div className="max-w-7xl">
 
         {/* Top Content */}
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
 
           <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-xs mb-5">
 
@@ -37,7 +37,7 @@ export default function Vision() {
 
 
 
-          <p className="text-[#444] text-sm md:text-base leading-8 max-w-xl">
+          <p className="text-[#444] text-sm md:text-base leading-8 max-w-3xl">
 
             Nestled in the heart of the Pocono Mountains, Shrimad
             Rajchandra Ashram, USA is a 400-acre haven where timeless wisdom
