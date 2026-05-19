@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const mobilePrograms = [
@@ -31,51 +27,13 @@ const mobilePrograms = [
 ];
 
 export default function Programs() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: "center",
-    skipSnaps: false,
-  });
-
-  useEffect(() => {
-    if (!emblaApi) {
-      return;
-    }
-
-    const handleSelect = () => {
-      setSelectedIndex(emblaApi.selectedScrollSnap());
-    };
-
-    handleSelect();
-    emblaApi.on("select", handleSelect);
-    emblaApi.on("reInit", handleSelect);
-
-    return () => {
-      emblaApi.off("select", handleSelect);
-      emblaApi.off("reInit", handleSelect);
-    };
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) {
-      return;
-    }
-
-    const intervalId = window.setInterval(() => {
-      emblaApi.scrollNext();
-    }, 2800);
-
-    return () => window.clearInterval(intervalId);
-  }, [emblaApi]);
-
   return (
     <section className="w-full bg-[#F8F6F2] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-14">
 
-        <div className="">
+        <div>
 
           <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-xs mb-4">
 
@@ -118,18 +76,11 @@ export default function Programs() {
         {/* Desktop Controls */}
         <div className="hidden md:flex flex-col items-end gap-8">
 
-          <button
-            type="button"
-            className="group mt-4 border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-4 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm"
-          >
+          <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-[#6B3B22] hover:text-white transition">
 
             View All Events
 
-            <span className="w-7 h-7 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
-
-              <ArrowRight size={14} />
-
-            </span>
+            <ArrowRight size={16} />
 
           </button>
 
@@ -137,11 +88,7 @@ export default function Programs() {
 
           <div className="flex items-center gap-4">
 
-            <button
-              type="button"
-              onClick={() => emblaApi?.scrollPrev()}
-              className="w-12 h-12 rounded-full border border-[#D5C7B0] flex items-center justify-center text-[#999] hover:bg-white transition"
-            >
+            <button className="w-12 h-12 rounded-full border border-[#D5C7B0] flex items-center justify-center text-[#999] hover:bg-white transition">
 
               <ChevronLeft size={18} />
 
@@ -149,11 +96,7 @@ export default function Programs() {
 
 
 
-            <button
-              type="button"
-              onClick={() => emblaApi?.scrollNext()}
-              className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center text-[#6B3B22] hover:bg-[#6B3B22] hover:text-white transition"
-            >
+            <button className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center text-[#6B3B22] hover:bg-[#6B3B22] hover:text-white transition">
 
               <ChevronRight size={18} />
 
@@ -245,84 +188,65 @@ export default function Programs() {
                   Date
                 </p>
 
-                <div className="hidden md:block relative">
+                <p className="text-[#444]">
                   April 26 - April 28
                 </p>
 
-                  <div className="overflow-hidden rounded-[32px] border border-[#E5D8C6] bg-[#F5F2EC] px-4 py-6 shadow-sm md:px-6 md:py-8">
-                    <div ref={emblaRef} className="overflow-hidden">
-                      <div className="flex touch-pan-y gap-6">
-                        {desktopPrograms.map((program, index) => {
-                          const isActive = selectedIndex === index;
+              </div>
 
-                          return (
-                            <div
-                              key={program.title}
-                              className="min-w-0 shrink-0 basis-[88%] md:basis-[84%] lg:basis-[72%]"
-                            >
-                              <article
-                                className={`group relative flex h-[420px] overflow-hidden rounded-2xl bg-[#F5F2EC] shadow-sm transition-[transform,opacity] duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${isActive ? "scale-100 opacity-100" : "scale-[0.94] opacity-75"}`}
-                              >
-                                <div className="relative w-[220px] shrink-0 lg:w-[240px]">
-                                  <Image
-                                    src={program.image}
-                                    alt={program.title}
-                                    fill
-                                    sizes="(max-width: 1024px) 220px, 240px"
-                                    className="object-cover transition duration-700 group-hover:scale-105"
-                                  />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-[#23150d]/45 via-transparent to-transparent" />
-                                </div>
 
-                                <div className="flex flex-1 flex-col justify-center p-6 lg:p-12">
-                                  <div>
-                                    <div className="mb-5 flex flex-wrap gap-3">
-                                      <span className="w-fit rounded-full bg-[#6B3B22] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-white">
-                                        {program.label}
-                                      </span>
-                                      <span className="w-fit rounded-full border border-[#D5C7B0] bg-white/70 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[#6B3B22]">
-                                        {program.tag}
-                                      </span>
-                                    </div>
 
-                                    <h3
-                                      className={`mb-6 leading-tight text-[#3A2A1F] transition-all duration-1000 ${isActive ? "text-[42px]" : "text-[30px]"}`}
-                                      style={{ fontFamily: "var(--font-stix)" }}
-                                    >
-                                      {program.title}
-                                    </h3>
+              <div>
 
-                                    <p className={`max-w-md leading-8 text-[#555] transition-all duration-1000 ${isActive ? "text-base" : "text-sm"}`}>
-                                      {program.text}
-                                    </p>
-                                  </div>
+                <p className="uppercase text-[#999] text-xs mb-2">
+                  Time
+                </p>
 
-                                  <div className={`mt-8 flex items-end justify-between gap-6 transition-all duration-1000 ${isActive ? "opacity-100" : "opacity-90"}`}>
-                                    <div className="flex gap-8 text-sm lg:gap-12">
-                                      <div>
-                                        <p className="mb-2 text-xs uppercase tracking-[0.18em] text-[#999]">
-                                          Date
-                                        </p>
-                                        <p className="text-[#444]">{program.date}</p>
-                                      </div>
-                                      <div>
-                                        <p className="mb-2 text-xs uppercase tracking-[0.18em] text-[#999]">
-                                          Time
-                                        </p>
-                                        <p className="text-[#444]">{program.time}</p>
-                                      </div>
-                                    </div>
+                <p className="text-[#444]">
+                  7AM - 6PM
+                </p>
 
-                                    <button className="rounded-md border border-[#6B3B22] px-6 py-3 text-sm font-medium text-[#6B3B22] transition hover:bg-[#6B3B22] hover:text-white">
-                                      Learn More
-                                    </button>
-                                  </div>
-                                </div>
-                              </article>
-                            </div>
-                          );
-                        })}
-                      </div>
+              </div>
+
+            </div>
+
+
+
+            <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition w-fit">
+
+              Learn More
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        {/* Side Preview Right */}
+        <div className="absolute right-0 opacity-20 scale-90">
+
+          <img
+            src="/event-side.png"
+            alt="Preview"
+            className="w-[220px] h-[420px] object-cover rounded-2xl"
+          />
+
+        </div>
+
+      </div>
+
+
+
+      {/* MOBILE VIEW */}
+      <div className="md:hidden">
+
+        {/* Featured Card */}
+        <div className="bg-[#F5F2EC] rounded-xl overflow-hidden mb-10">
+
+          <img
+            src="/event-main.png"
             alt="Event"
             className="w-full h-[320px] object-cover"
           />
@@ -362,59 +286,44 @@ export default function Programs() {
 
 
 
-            <div className="flex flex-col items-center mb-10">
+            <div className="flex gap-8 mb-8 text-sm">
 
-              <div className="flex flex-col gap-6 text-sm">
+              <div>
 
-                {/* Date */}
-                <div className="flex items-center gap-10">
+                <p className="uppercase text-[#999] text-[10px] mb-2">
+                  Date
+                </p>
 
-                  <p className="uppercase text-[#8A4D3B] text-[11px] tracking-[2px] min-w-[50px]">
-
-                    Date
-
-                  </p>
-
-                  <p className="text-[#333] text-[15px]">
-
-                    July 2026
-
-                  </p>
-
-                </div>
-
-
-
-                {/* Time */}
-                <div className="flex items-center gap-10">
-
-                  <p className="uppercase text-[#8A4D3B] text-[11px] tracking-[2px] min-w-[50px]">
-
-                    Time
-
-                  </p>
-
-                  <p className="text-[#333] text-[15px]">
-
-                    Fri 6 PM - Sun 12 PM
-
-                  </p>
-
-                </div>
+                <p className="text-[#444] text-xs">
+                  July 2026
+                </p>
 
               </div>
 
 
 
-              {/* Button */}
-              <button className="mt-10 border border-[#6B3B22] text-[#6B3B22] px-12 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition">
+              <div>
 
-                Learn More
+                <p className="uppercase text-[#999] text-[10px] mb-2">
+                  Time
+                </p>
 
-              </button>
+                <p className="text-[#444] text-xs">
+                  Fri 6PM - Sun 12 PM
+                </p>
+
+              </div>
 
             </div>
-          
+
+
+
+            <button className="border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition">
+
+              Learn More
+
+            </button>
+
           </div>
 
         </div>
@@ -422,7 +331,7 @@ export default function Programs() {
 
 
         {/* Mobile List */}
-        <div className="space-y-12 p-5">
+        <div className="space-y-12">
 
           {mobilePrograms.map((program, index) => (
             <div key={index}>
@@ -435,12 +344,7 @@ export default function Programs() {
 
 
 
-              <h4
-                className="text-[#333] text-[32px] mb-5 leading-tight"
-                style={{
-                  fontFamily: "var(--font-stix)",
-                }}
-              >
+              <h4 className="text-[#333] text-[32px] mb-5">
 
                 {program.title}
 
@@ -490,6 +394,17 @@ export default function Programs() {
           ))}
 
         </div>
+
+
+
+        {/* Mobile Button */}
+        <button className="mt-12 border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-[#6B3B22] hover:text-white transition">
+
+          View All Events
+
+          <ArrowRight size={16} />
+
+        </button>
 
       </div>
 
