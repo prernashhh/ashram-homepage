@@ -255,7 +255,7 @@ export default function Footer() {
         <div className="md:hidden pt-4">
 
           {/* Address */}
-          <div className="text-[14px] leading-7 text-white/90 mb-7 text-left">
+          <div className=" text-center text-[14px] leading-7 text-white/90 mb-7">
             <p>Shrimad Rajchandra Ashram, USA</p>
 
             <p>206 Marquis Rd, East Stroudsburg, PA 18302</p>
@@ -265,8 +265,7 @@ export default function Footer() {
 
 
           {/* Policies */}
-          <div className="flex text-center items-center gap-2 text-[12px] text-white/90 whitespace-nowrap mb-6 overflow-x-auto no-scrollbar">
-            <p>Terms Of Use</p>
+          <div className="flex justify-center items-center gap-2 text-[11px] text-white/90 whitespace-nowrap mb-6">            <p>Terms Of Use</p>
 
             <span>|</span>
 

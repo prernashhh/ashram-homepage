@@ -12,15 +12,16 @@ export default function Inspiration() {
             alt="Visionary"
             className="
             w-full
-            aspect-[16/8]
+            aspect-[16/10]
+            lg:aspect-[16/8]
             min-[1570px]:aspect-[16/7.2]
             object-cover
             object-top
-          "
+            "
           />
 
           <div className="absolute inset-0 z-10">
-            <div className="px-10 lg:px-20 pt-10 lg:pt-16 max-w-3xl">
+            <div className="px-8 lg:px-20 pt-10 lg:pt-16 pb-16 lg:pb-0 max-w-3xl">
               <p className="uppercase tracking-[3px] text-[#2A2A2A] text-xs mb-4">
                 The Inspiration
               </p>
@@ -115,10 +116,9 @@ export default function Inspiration() {
               </p>
             </div>
 
-            <button className="group mt-6 w-3xs border-[#6B3B22] text-[#6B3B22] px-4 py-2 rounded-full text-[14px] font-medium flex items-center justify-between hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">
-              About Our Guides
-
-              <span className="w-8 h-8 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
+              <button className="group mt-6 border-[#6B3B22] text-[#6B3B22] px-5 py-2.5 rounded-full text-[14px] font-medium flex items-center gap-3 w-fit hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">              
+                About Our Guides
+              <span className="w-7 h-7 shrink-0 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
                 <ArrowRight size={16} />
               </span>
             </button>
