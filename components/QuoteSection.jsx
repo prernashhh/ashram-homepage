@@ -4,39 +4,39 @@ export default function QuoteSection() {
 
       <div className="relative overflow-hidden">
 
+        {/* Background */}
         <img
           src="/quote-bg.png"
           alt="Quote Background"
           className="
             w-full
-            h-[220px]
+            h-[240px]
             md:h-[340px]
             object-cover
             object-center
-            scale-[1.02]
           "
         />
-
-
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-[#F5EBDD]/72"></div>
 
-
-
         {/* Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
 
+          {/* Quote */}
           <h2
             className="
-              text-[#5B3427]
+              text-[#4A3B2E]
+              md:text-[#5A381C]
               text-[22px]
-              md:text-[42px]
-              leading-[1.35]
-              font-medium
-              max-w-[360px]
-              md:max-w-4xl
-              mb-4
+              md:text-[48px]
+              leading-[143%]
+              md:leading-[60px]
+              font-normal
+              max-w-[340px]
+              md:max-w-[760px]
+              mb-5
+              antialiased
             "
             style={{
               fontFamily: "var(--font-stix)",
@@ -48,16 +48,16 @@ export default function QuoteSection() {
 
               “Peace is your nature.
               <br />
-              Let it reflect in
+              Let it reflect in every thought,
               <br />
-              every thought, word, and deed.”
+              word, and deed.”
 
             </span>
 
 
 
             {/* Desktop */}
-            <span className="hidden md:block">
+            <span className="hidden md:block italic">
 
               “Peace is your nature. Let it reflect in
               <br />
@@ -69,7 +69,8 @@ export default function QuoteSection() {
 
 
 
-          <p className="uppercase tracking-[1.5px] text-[#6B3B22] text-[11px] md:text-lg font-semibold">
+          {/* Author */}
+          <p className="uppercase tracking-[1.5px] text-[#6B3B22] text-[11px] md:text-[20px] font-semibold">
 
             - Pujya Gurudevshri Rakeshji
 

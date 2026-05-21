@@ -19,7 +19,8 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-start pt-[200px] md:pt-[200px] text-center px-6">
 
-        <p className="uppercase tracking-[3px] text-white text-[10px] md:text-sm mb-6">
+        {/* Top Label */}
+        <p className="uppercase tracking-[3px] text-[#FAFAFA] text-[10px] md:text-sm mb-6">
 
           Realize One’s True Self and Serve Others Selflessly
 
@@ -27,15 +28,17 @@ export default function Hero() {
 
 
 
+        {/* Heading */}
         <h1
           className="
-            text-white
+            text-[#FAFAFA]
             text-[32px]
-            md:text-6xl
+            md:text-[54px]
             lg:text-[64px]
-            leading-tight
-            font-medium
+            leading-[1.05]
+            font-normal
             max-w-5xl
+            antialiased
           "
           style={{
             fontFamily: "var(--font-stix)",
@@ -49,7 +52,7 @@ export default function Hero() {
 
 
         {/* Scroll */}
-        <div className="absolute bottom-10 flex flex-col items-center text-white">
+        <div className="absolute bottom-10 flex flex-col items-center text-[#FAFAFA]">
 
           <p className="text-xs tracking-[3px] uppercase mb-2">
 
@@ -57,7 +60,15 @@ export default function Hero() {
 
           </p>
 
-          <div className="w-px h-12 bg-white"></div>
+
+
+          <div className="relative h-14 w-px overflow-hidden">
+
+            <div className="absolute inset-0 bg-white/30"></div>
+
+            <div className="absolute bottom-0 w-px h-6 bg-white animate-scrollLine"></div>
+
+          </div>
 
         </div>
 
