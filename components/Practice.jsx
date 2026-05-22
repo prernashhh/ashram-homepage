@@ -1,157 +1,364 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
-const cards = [
+const events = [
   {
+    image: "/event-main.png",
     title: "Guru Purnima Shibir",
     description:
       "A transformative three-day immersion in silence, meditation, and self-reflection. Disconnect from the noise and reconnect with your inner stillness.",
-    image: "/event-main.png",
-    date: "July 2026",
-    time: "Fri 6 PM - Sun 12 PM",
-  },
-
-  {
-    title: "Yoga & Mindfulness Workshop",
-    description:
-      "A comprehensive three-day workshop combining traditional yoga practices with modern mindfulness techniques for holistic wellbeing.",
-    image: "/yoga.png",
     date: "April 26 - April 28",
     time: "7AM - 6PM",
   },
 
   {
-    title: "Meditation Retreat",
+    image: "/event-side.jpg",
+    title: "Breathwork Retreat",
     description:
-      "Reconnect with your inner peace through guided meditations and moments of silence in nature.",
-    image: "/meditation.png",
-    date: "May 14 - May 16",
+      "Experience conscious breathing practices that calm the nervous system and restore mental clarity and balance.",
+    date: "May 12 - May 15",
     time: "8AM - 5PM",
   },
 
   {
-    title: "Sound Healing Experience",
+    image: "/workshop.png",
+    title: "Mindfulness Workshop",
     description:
-      "Immerse yourself in calming sounds and healing vibrations for complete relaxation and renewal.",
-    image: "/sound-healing.png",
-    date: "June 8 - June 10",
-    time: "6PM - 9PM",
-  },
-
-  {
-    title: "Breathwork Session",
-    description:
-      "Experience deep breathing techniques that cultivate stillness, balance, and emotional clarity.",
-    image: "/event-side.jpg",
-    date: "August 4 - August 5",
+      "Interactive sessions focused on self-awareness, emotional grounding, and practical tools for mindful living.",
+    date: "June 2 - June 4",
     time: "9AM - 4PM",
   },
 
   {
-    title: "Workshop Series",
+    image: "/sound-healing.png",
+    title: "Sacred Sound Healing",
     description:
-      "Interactive sessions focused on self-growth, spirituality, and mindful living.",
-    image: "/workshop.png",
-    date: "September 10",
-    time: "10AM - 3PM",
+      "Experience calming vibrations and restorative sound journeys that settle the mind and uplift the spirit.",
+    date: "July 10 - July 12",
+    time: "5PM - 9PM",
   },
 ];
 
-export default function Practice() {
+export default function Programs() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % events.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex(
+      (prev) => (prev - 1 + events.length) % events.length
+    );
+  };
+
+  const current = events[activeIndex];
+
+  const prev =
+    events[
+      (activeIndex - 1 + events.length) % events.length
+    ];
+
+  const next =
+    events[
+      (activeIndex + 1) % events.length
+    ];
+
   return (
-    <section className="w-full bg-[#F0EADE80] px-6 md:px-20 lg:px-32 py-16 md:py-24">
+    <section className="w-full bg-[#F8F6F2] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
 
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-[1320px] mx-auto">
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
+        {/* TOP */}
+        <div className="mb-16">
 
-          <div>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
 
-            <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-[14px] font-medium mb-4">
+            {/* LEFT */}
+            <div className="max-w-[986px]">
 
-              The Practice
+              <p className="uppercase tracking-[1.2px] text-[rgba(40,40,40,0.80)] text-[14px] md:text-[20px] font-medium mb-5">
 
-            </p>
+                The Programs
 
-
-
-            <h2
-              className="
-                text-[#5A381C]
-                text-[40px]
-                xl:text-[58px]
-                leading-tight
-                font-normal
-                mb-4
-              "
-              style={{
-                fontFamily: "var(--font-stix)",
-              }}
-            >
-
-              Choose Your <i>Path</i>
-
-            </h2>
+              </p>
 
 
 
-            <p className="text-[#444] text-base md:text-lg">
+              <h2
+                className="
+                  text-[#5E2A29]
+                  text-[38px]
+                  md:text-[52px]
+                  leading-[46px]
+                  md:leading-[58px]
+                  font-normal
+                  antialiased
+                  mb-5
+                "
+                style={{
+                  fontFamily: "var(--font-stix)",
+                }}
+              >
 
-              Experiences that nurture every part of your being
+                Join an <i>Upcoming Event</i>
 
-            </p>
+              </h2>
+
+
+
+              <p className="text-[#282828] text-[16px] md:text-[20px] leading-[32px] md:leading-[38px] font-normal">
+
+                Register and mark your calendar for an enriching experience
+
+              </p>
+
+            </div>
+
+
+
+            {/* BUTTON */}
+            <div className="hidden md:flex items-start shrink-0 pt-24 pr-12 lg:pr-20">
+
+              <button className="group border border-[#6B3B22] text-[#6B3B22] px-5 py-2.5 rounded-full text-[16px] font-medium flex items-center gap-5 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white">
+
+                View All Events
+
+                <span className="w-8 h-8 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
+
+                  <ArrowRight size={16} />
+
+                </span>
+
+              </button>
+
+            </div>
 
           </div>
 
 
 
-          {/* Desktop Button */}
-          <button
+          {/* ARROWS */}
+          <div className="hidden md:flex justify-end items-center gap-4 mt-8">
+
+            <button
+              onClick={prevSlide}
+              className="w-12 h-12 rounded-full border border-[#C9B8A2] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
+            >
+
+              <ChevronLeft size={20} />
+
+            </button>
+
+
+
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
+            >
+
+              <ChevronRight size={20} />
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        {/* DESKTOP */}
+        <div className="hidden md:flex items-center justify-center relative overflow-hidden">
+
+          <div
+            key={activeIndex}
             className="
-              hidden md:inline-flex
-              h-[60px]
-              px-[20px]
-              py-[10px]
-              justify-center
-              items-center
-              gap-2
-              rounded-[40px]
-              border
-              border-[#5E2A29]
-              text-[#5E2A29]
-              bg-transparent
-              text-[16px]
-              font-medium
-              transition-all
-              duration-300
-              hover:bg-[#5E2A29]
-              hover:text-white
-              group
+              flex items-center gap-6 lg:gap-8
+              animate-carouselSlide
             "
           >
 
-            Explore All Activities
+            {/* LEFT PREVIEW */}
+            <div className="
+              w-[180px] lg:w-[240px]
+              opacity-20
+              scale-[0.9]
+              blur-[1px]
+              transition-all duration-700
+            ">
 
-            <span
+              <div className="rounded-2xl overflow-hidden bg-[#F5F2EC]">
+
+                <img
+                  src={prev.image}
+                  alt={prev.title}
+                  className="w-full h-[548px] object-cover"
+                />
+
+              </div>
+
+            </div>
+
+
+
+            {/* CENTER CARD */}
+            <div
               className="
-                w-8 h-8
-                rounded-full
-                bg-[#5E2A29]
-                text-white
-                flex items-center justify-center
-                transition-all duration-300
-                group-hover:bg-white
-                group-hover:text-[#5E2A29]
+                w-full max-w-5xl
+                min-h-[548px]
+                bg-[#F5F2EC]
+                rounded-2xl
+                overflow-hidden
+                grid lg:grid-cols-2
+                transition-all duration-700
               "
             >
 
-              <ArrowRight size={14} />
+              {/* IMAGE */}
+              <img
+                src={current.image}
+                alt={current.title}
+                className="w-full min-h-[548px] object-cover"
+              />
 
-            </span>
 
-          </button>
+
+              {/* CONTENT */}
+              <div className="px-12 py-12 flex flex-col h-full">
+
+                {/* TAGS */}
+                <div className="flex items-center gap-3 mb-10 flex-wrap">
+
+                  <span className="bg-[#6B2B26] text-white text-[10px] px-5 py-2 rounded-full uppercase tracking-wide">
+
+                    Featured Event
+
+                  </span>
+
+
+
+                  <span className="border border-[#D5C7B0] text-[#6B3B22] text-[10px] px-5 py-2 rounded-full uppercase tracking-wide">
+
+                    Pujya Gurudevshri
+
+                  </span>
+
+                </div>
+
+
+
+                {/* TITLE */}
+                <h3
+                  className="
+                    text-[#2D2118]
+                    text-[34px]
+                    xl:text-[42px]
+                    leading-tight
+                    font-normal
+                    mb-8
+                  "
+                  style={{
+                    fontFamily: "var(--font-stix)",
+                  }}
+                >
+
+                  {current.title}
+
+                </h3>
+
+
+
+                {/* DESCRIPTION */}
+                <p className="text-[#555] leading-[38px] mb-10 max-w-md text-[18px]">
+
+                  {current.description}
+
+                </p>
+
+
+
+                {/* DATE + TIME */}
+                <div className="flex flex-col gap-5 mt-auto mb-10">
+
+                  <div className="flex items-center gap-10">
+
+                    <p className="uppercase text-[#999] text-[14px] tracking-[1px] min-w-[52px]">
+
+                      Date
+
+                    </p>
+
+                    <p className="text-[#444] text-[18px]">
+
+                      {current.date}
+
+                    </p>
+
+                  </div>
+
+
+
+                  <div className="flex items-center gap-10">
+
+                    <p className="uppercase text-[#999] text-[14px] tracking-[1px] min-w-[52px]">
+
+                      Time
+
+                    </p>
+
+                    <p className="text-[#444] text-[18px]">
+
+                      {current.time}
+
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+
+                {/* BUTTON */}
+                <button className="border border-[#6B3B22] text-[#6B3B22] px-10 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition w-fit mt-auto">
+
+                  Learn More
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+
+            {/* RIGHT PREVIEW */}
+            <div className="
+              w-[180px] lg:w-[240px]
+              opacity-20
+              scale-[0.9]
+              blur-[1px]
+              transition-all duration-700
+            ">
+
+              <div className="rounded-2xl overflow-hidden bg-[#F5F2EC]">
+
+                <img
+                  src={next.image}
+                  alt={next.title}
+                  className="w-full h-[548px] object-cover"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -160,31 +367,26 @@ export default function Practice() {
         {/* MOBILE */}
         <div className="md:hidden flex flex-col gap-8">
 
-          {cards.map((card, index) => (
+          {events.map((event, index) => (
             <div
               key={index}
-              className="
-                bg-[rgba(255,255,255,0.7)]
-                overflow-hidden
-              "
+              className="w-full bg-[#F5F2EC] overflow-hidden"
             >
 
-              {/* Image */}
               <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-[340px] object-cover"
+                src={event.image}
+                alt={event.title}
+                className="w-full h-[360px] object-cover"
               />
 
 
 
-              {/* Content */}
-              <div className="px-5 pt-5 pb-7">
+              <div className="px-7 py-8">
 
-                {/* Tag */}
-                <div className="mb-5">
+                {/* TAGS */}
+                <div className="flex items-center gap-2 mb-6 flex-wrap">
 
-                  <span className="bg-[#B08A5A] text-white text-[10px] tracking-[1px] uppercase px-4 py-2 rounded-full">
+                  <span className="bg-[#B08A5A] text-white text-[9px] px-4 py-2 rounded-full uppercase tracking-wide">
 
                     Featured Event
 
@@ -194,173 +396,86 @@ export default function Practice() {
 
 
 
-                {/* Title */}
+                {/* TITLE */}
                 <h3
                   className="
-                    text-[#5A381C]
+                    text-[#5E2A29]
                     text-[28px]
-                    leading-tight
+                    leading-normal
                     font-normal
-                    mb-5
+                    mb-6
                   "
                   style={{
                     fontFamily: "var(--font-stix)",
                   }}
                 >
 
-                  {card.title}
+                  {event.title}
 
                 </h3>
 
 
 
-                {/* Description */}
-                <p className="text-[#444] text-[15px] leading-9 mb-8">
+                {/* DESCRIPTION */}
+                <p className="text-[#444] text-[16px] leading-[38px] mb-10">
 
-                  {card.description}
+                  {event.description}
 
                 </p>
 
 
 
-                {/* Date + Time */}
-<div className="space-y-4 mb-10">
+                {/* DATE + TIME */}
+                <div className="space-y-5 mb-10">
 
-  {/* Date */}
-  <div className="flex items-center gap-8">
+                  <div className="flex items-center gap-8">
 
-    <p className="
-      w-[60px]
-      uppercase
-      text-[11px]
-      tracking-[2px]
-      text-[#9B6C63]
-    ">
+                    <p className="uppercase text-[#8B5A3C] text-[11px] tracking-[2px] min-w-[52px]">
 
-      Date
+                      Date
 
-    </p>
+                    </p>
 
-    <p className="text-[15px] text-[#3B312F] font-medium">
+                    <p className="text-[#444] text-[15px] font-medium">
 
-      {card.date}
+                      {event.date}
 
-    </p>
+                    </p>
 
-  </div>
+                  </div>
 
 
 
-  {/* Time */}
-  <div className="flex items-center gap-8">
+                  <div className="flex items-center gap-8">
 
-    <p className="
-      w-[60px]
-      uppercase
-      text-[11px]
-      tracking-[2px]
-      text-[#9B6C63]
-    ">
+                    <p className="uppercase text-[#8B5A3C] text-[11px] tracking-[2px] min-w-[52px]">
 
-      Time
+                      Time
 
-    </p>
+                    </p>
 
-    <p className="text-[15px] text-[#3B312F] font-medium">
+                    <p className="text-[#444] text-[15px] font-medium">
 
-      {card.time}
+                      {event.time}
 
-    </p>
+                    </p>
 
-  </div>
+                  </div>
 
-</div>
+                </div>
 
 
-                {/* Button */}
+
+                {/* BUTTON */}
                 <div className="flex justify-center">
 
-                  <button className="border border-[#8A5A44] text-[#8A5A44] px-10 py-3 rounded-[4px] text-sm hover:bg-[#8A5A44] hover:text-white transition">
+                  <button className="border border-[#6B3B22] text-[#6B3B22] px-10 py-3 rounded-md text-sm font-medium hover:bg-[#6B3B22] hover:text-white transition">
 
                     Learn More
 
                   </button>
 
                 </div>
-
-              </div>
-
-            </div>
-          ))}
-
-        </div>
-
-
-
-        {/* DESKTOP */}
-        <div className="hidden md:flex gap-6 overflow-x-auto pb-6 no-scrollbar">
-
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="
-                min-w-[285px]
-                max-w-[285px]
-                shrink-0
-                bg-[rgba(255,255,255,0.7)]
-                rounded-xl
-                overflow-hidden
-                backdrop-blur-sm
-              "
-            >
-
-              <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-[210px] object-cover"
-              />
-
-
-
-              <div className="p-6 flex flex-col min-h-[160px]">
-
-                <h3
-                  className="
-                    text-[#5A381C]
-                    text-[24px]
-                    mb-4
-                    font-normal
-                  "
-                  style={{
-                    fontFamily: "var(--font-stix)",
-                  }}
-                >
-
-                  {card.title}
-
-                </h3>
-
-
-
-                <p className="text-[#444] text-sm leading-8 mb-8 flex-grow">
-
-                  {card.description}
-
-                </p>
-
-
-
-                <button className="mt-auto flex items-center gap-3 text-[#6B3B22] text-sm font-medium hover:opacity-70 transition">
-
-                  Learn More
-
-                  <span>
-
-                    <ArrowRight size={12} />
-
-                  </span>
-
-                </button>
 
               </div>
 
