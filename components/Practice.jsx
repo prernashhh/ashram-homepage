@@ -1,231 +1,208 @@
 "use client";
 
-import { useState } from "react";
-
-import {
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const cards = [
   {
-    title: "Wisdom",
-    text: "Transformative teachings and insights that bring clarity to daily life and guide the journey within.",
-    image: "/wisdom.png",
+    title: "Guru Purnima Shibir",
+    description:
+      "A transformative three-day immersion in silence, meditation, and self-reflection. Disconnect from the noise and reconnect with your inner stillness.",
+    image: "/event-main.png",
+    date: "July 2026",
+    time: "Fri 6 PM - Sun 12 PM",
   },
 
   {
-    title: "Meditation",
-    text: "Dedicated time in silence and guided meditation to reconnect with your inner peace center.",
-    image: "/meditation.png",
-  },
-
-  {
-    title: "Yoga",
-    text: "Gentle yoga practices that unite breath, body, and being.",
+    title: "Yoga & Mindfulness Workshop",
+    description:
+      "A comprehensive three-day workshop combining traditional yoga practices with modern mindfulness techniques for holistic wellbeing.",
     image: "/yoga.png",
+    date: "April 26 - April 28",
+    time: "7AM - 6PM",
   },
 
   {
-    title: "Sound Healing",
-    text: "Calming sounds and soothing vibrations to help you settle into a quieter state within.",
+    title: "Meditation Retreat",
+    description:
+      "Reconnect with your inner peace through guided meditations and moments of silence in nature.",
+    image: "/meditation.png",
+    date: "May 14 - May 16",
+    time: "8AM - 5PM",
+  },
+
+  {
+    title: "Sound Healing Experience",
+    description:
+      "Immerse yourself in calming sounds and healing vibrations for complete relaxation and renewal.",
     image: "/sound-healing.png",
-  },
-  {
-    title: "Breathwork",
-    text: "Deep breathing techniques that cultivate balance, stillness, and inner awareness.",
-    image: "/event-side.jpg",
+    date: "June 8 - June 10",
+    time: "6PM - 9PM",
   },
 
   {
-    title: "Workshops",
-    text: "Interactive sessions focused on self-growth, mindfulness, and spiritual understanding.",
+    title: "Breathwork Session",
+    description:
+      "Experience deep breathing techniques that cultivate stillness, balance, and emotional clarity.",
+    image: "/event-side.jpg",
+    date: "August 4 - August 5",
+    time: "9AM - 4PM",
+  },
+
+  {
+    title: "Workshop Series",
+    description:
+      "Interactive sessions focused on self-growth, spirituality, and mindful living.",
     image: "/workshop.png",
+    date: "September 10",
+    time: "10AM - 3PM",
   },
 ];
 
 export default function Practice() {
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    if (currentIndex < cards.length - 4) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
   return (
-    <section className="w-full bg-[#F0EADE80] px-5 md:px-8 py-16 md:py-24 overflow-hidden">
+    <section className="w-full bg-[#F0EADE80] px-6 md:px-20 lg:px-32 py-16 md:py-24">
 
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
-        <div>
+      <div className="max-w-[1280px] mx-auto">
 
-          <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-xs mb-4">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
 
-            The Practice
+          <div>
 
-          </p>
+            <p className="uppercase tracking-[3px] text-[#555] text-[10px] md:text-[14px] font-medium mb-4">
+
+              The Practice
+
+            </p>
 
 
 
-          <h2
+            <h2
+              className="
+                text-[#5A381C]
+                text-[40px]
+                xl:text-[58px]
+                leading-tight
+                font-normal
+                mb-4
+              "
+              style={{
+                fontFamily: "var(--font-stix)",
+              }}
+            >
+
+              Choose Your <i>Path</i>
+
+            </h2>
+
+
+
+            <p className="text-[#444] text-base md:text-lg">
+
+              Experiences that nurture every part of your being
+
+            </p>
+
+          </div>
+
+
+
+          {/* Desktop Button */}
+          <button
             className="
-              text-[#6B3B22]
-              text-[40px]
-              xl:text-[58px]
-              leading-tight
+              hidden md:inline-flex
+              h-[60px]
+              px-[20px]
+              py-[10px]
+              justify-center
+              items-center
+              gap-2
+              rounded-[40px]
+              border
+              border-[#5E2A29]
+              text-[#5E2A29]
+              bg-transparent
+              text-[16px]
               font-medium
-              mb-4
+              transition-all
+              duration-300
+              hover:bg-[#5E2A29]
+              hover:text-white
+              group
             "
-            style={{
-              fontFamily: "var(--font-stix)",
-            }}
           >
 
-            Choose Your <i>Path</i>
+            Explore All Activities
 
-          </h2>
+            <span
+              className="
+                w-8 h-8
+                rounded-full
+                bg-[#5E2A29]
+                text-white
+                flex items-center justify-center
+                transition-all duration-300
+                group-hover:bg-white
+                group-hover:text-[#5E2A29]
+              "
+            >
 
+              <ArrowRight size={14} />
 
+            </span>
 
-          <p className="text-[#444] text-base md:text-lg">
-
-            Experiences that nurture every part of your being.
-
-          </p>
+          </button>
 
         </div>
 
 
 
-        {/* Desktop Button */}
-        <button className="hidden md:flex group mt-4 border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium items-center gap-4 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">
-
-          Explore All Activities
-
-          <span className="w-7 h-7 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
-
-            <ArrowRight size={14} />
-
-          </span>
-
-        </button>
-
-      </div>
-
-
-
-      {/* MOBILE + TABLET CARDS */}
-      <div className="xl:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 no-scrollbar">
-
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="
-              w-[82%]
-              sm:w-[48%]
-              shrink-0
-              snap-start
-              bg-[#F7F5F2]
-              rounded-xl
-              overflow-hidden
-            "
-          >
-
-            <img
-              src={card.image}
-              alt={card.title}
-              className="w-full h-[280px] object-cover"
-            />
-
-
-
-            <div className="p-5 flex flex-col min-h-[240px]">
-
-              <h3
-                className="text-[#6B3B22] text-[34px] mb-4"
-                style={{
-                  fontFamily: "var(--font-stix)",
-                }}
-              >
-
-                {card.title}
-
-              </h3>
-
-
-
-              <p className="text-[#444] text-sm leading-8 mb-8 flex-grow">
-
-                {card.text}
-
-              </p>
-
-
-
-              <button className="mt-auto flex items-center gap-3 text-[#6B3B22] text-sm font-medium hover:opacity-70 transition">
-
-                Learn More
-
-                <span >
-
-                  <ArrowRight size={12} />
-
-                </span>
-
-              </button>
-
-            </div>
-
-          </div>
-        ))}
-
-      </div>
-
-
-
-      {/* DESKTOP SLIDER */}
-      <div className="hidden xl:block overflow-hidden">
-
-        <div
-          className="flex gap-6 transition-transform duration-500 ease-in-out"
-          style={{
-            transform: `translateX(-${currentIndex * 25.5}%)`,
-          }}
-        >
+        {/* MOBILE */}
+        <div className="md:hidden flex flex-col gap-8">
 
           {cards.map((card, index) => (
             <div
               key={index}
               className="
-                basis-1/4
-                shrink-0
-                bg-[#F7F5F2]
-                rounded-xl
+                bg-[rgba(255,255,255,0.7)]
                 overflow-hidden
               "
             >
 
+              {/* Image */}
               <img
                 src={card.image}
                 alt={card.title}
-                className="w-full h-[320px] object-cover"
+                className="w-full h-[340px] object-cover"
               />
 
 
 
-              <div className="p-5 flex flex-col min-h-[250px]">
+              {/* Content */}
+              <div className="px-5 pt-5 pb-7">
 
+                {/* Tag */}
+                <div className="mb-5">
+
+                  <span className="bg-[#B08A5A] text-white text-[10px] tracking-[1px] uppercase px-4 py-2 rounded-full">
+
+                    Featured Event
+
+                  </span>
+
+                </div>
+
+
+
+                {/* Title */}
                 <h3
-                  className="text-[#6B3B22] text-[34px] mb-4"
+                  className="
+                    text-[#5A381C]
+                    text-[28px]
+                    leading-tight
+                    font-normal
+                    mb-5
+                  "
                   style={{
                     fontFamily: "var(--font-stix)",
                   }}
@@ -237,9 +214,137 @@ export default function Practice() {
 
 
 
-                <p className="text-[#444] text-sm leading-7 mb-8 flex-grow">
+                {/* Description */}
+                <p className="text-[#444] text-[15px] leading-9 mb-8">
 
-                  {card.text}
+                  {card.description}
+
+                </p>
+
+
+
+                {/* Date + Time */}
+<div className="space-y-4 mb-10">
+
+  {/* Date */}
+  <div className="flex items-center gap-8">
+
+    <p className="
+      w-[60px]
+      uppercase
+      text-[11px]
+      tracking-[2px]
+      text-[#9B6C63]
+    ">
+
+      Date
+
+    </p>
+
+    <p className="text-[15px] text-[#3B312F] font-medium">
+
+      {card.date}
+
+    </p>
+
+  </div>
+
+
+
+  {/* Time */}
+  <div className="flex items-center gap-8">
+
+    <p className="
+      w-[60px]
+      uppercase
+      text-[11px]
+      tracking-[2px]
+      text-[#9B6C63]
+    ">
+
+      Time
+
+    </p>
+
+    <p className="text-[15px] text-[#3B312F] font-medium">
+
+      {card.time}
+
+    </p>
+
+  </div>
+
+</div>
+
+
+                {/* Button */}
+                <div className="flex justify-center">
+
+                  <button className="border border-[#8A5A44] text-[#8A5A44] px-10 py-3 rounded-[4px] text-sm hover:bg-[#8A5A44] hover:text-white transition">
+
+                    Learn More
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+
+
+        {/* DESKTOP */}
+        <div className="hidden md:flex gap-6 overflow-x-auto pb-6 no-scrollbar">
+
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="
+                min-w-[285px]
+                max-w-[285px]
+                shrink-0
+                bg-[rgba(255,255,255,0.7)]
+                rounded-xl
+                overflow-hidden
+                backdrop-blur-sm
+              "
+            >
+
+              <img
+                src={card.image}
+                alt={card.title}
+                className="w-full h-[210px] object-cover"
+              />
+
+
+
+              <div className="p-6 flex flex-col min-h-[160px]">
+
+                <h3
+                  className="
+                    text-[#5A381C]
+                    text-[24px]
+                    mb-4
+                    font-normal
+                  "
+                  style={{
+                    fontFamily: "var(--font-stix)",
+                  }}
+                >
+
+                  {card.title}
+
+                </h3>
+
+
+
+                <p className="text-[#444] text-sm leading-8 mb-8 flex-grow">
+
+                  {card.description}
 
                 </p>
 
@@ -261,72 +366,6 @@ export default function Practice() {
 
             </div>
           ))}
-
-        </div>
-
-      </div>
-
-
-
-      {/* Bottom Controls */}
-      <div className="flex flex-col md:flex-row items-center justify-between mt-10">
-
-        {/* Mobile Button */}
-        <button className="md:hidden group border border-[#6B3B22] text-[#6B3B22] px-6 py-3 rounded-full text-sm font-medium flex items-center gap-4 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white/40 backdrop-blur-sm">
-
-          Explore All Activities
-
-          <span className="w-7 h-7 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
-
-            <ArrowRight size={12} />
-
-          </span>
-
-        </button>
-
-
-
-        {/* Desktop Arrows */}
-        <div className="hidden md:flex items-center gap-4 ml-auto">
-
-          <button
-            onClick={prevSlide}
-            disabled={currentIndex === 0}
-            className="
-              w-12 h-12 rounded-full border
-              border-[#6B3B22]
-              flex items-center justify-center
-              text-[#6B3B22]
-              hover:bg-[#6B3B22]
-              hover:text-white
-              transition
-              disabled:opacity-40
-            "
-          >
-
-            <ChevronLeft size={18} />
-
-          </button>
-
-
-
-          <button
-            onClick={nextSlide}
-            disabled={currentIndex >= cards.length - 4}
-            className="
-              w-12 h-12 rounded-full border
-              border-[#6B3B22]
-              flex items-center justify-center
-              text-[#6B3B22]
-              hover:bg-[#6B3B22]
-              hover:text-white
-              transition
-              disabled:opacity-40
-            "
-          >
-            <ChevronRight size={18} />
-
-          </button>
 
         </div>
 

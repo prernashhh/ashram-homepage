@@ -76,92 +76,97 @@ export default function Programs() {
       <div className="max-w-[1320px] mx-auto">
 
         {/* TOP */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+        <div className="mb-16">
 
-          {/* Left */}
-          <div className="max-w-[986px]">
+          {/* Heading + Button */}
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
 
-            <p className="uppercase tracking-[1.2px] text-[rgba(40,40,40,0.80)] text-[14px] md:text-[20px] font-medium mb-5">
+            {/* Left */}
+            <div className="max-w-[986px]">
 
-              The Programs
+              <p className="uppercase tracking-[1.2px] text-[rgba(40,40,40,0.80)] text-[14px] md:text-[20px] font-medium mb-5">
 
-            </p>
+                The Programs
 
-
-
-            <h2
-              className="
-                text-[#5E2A29]
-                text-[38px]
-                md:text-[52px]
-                leading-[46px]
-                md:leading-[58px]
-                font-normal
-                antialiased
-                mb-5
-              "
-              style={{
-                fontFamily: "var(--font-stix)",
-              }}
-            >
-
-              Join an <i>Upcoming Event</i>
-
-            </h2>
+              </p>
 
 
 
-            <p className="text-[#282828] text-[16px] md:text-[20px] leading-[32px] md:leading-[38px] font-normal">
+              <h2
+                className="
+                  text-[#5E2A29]
+                  text-[38px]
+                  md:text-[52px]
+                  leading-[46px]
+                  md:leading-[58px]
+                  font-normal
+                  antialiased
+                  mb-5
+                "
+                style={{
+                  fontFamily: "var(--font-stix)",
+                }}
+              >
 
-              Register and mark your calendar for an enriching experience
+                Join an <i>Upcoming Event</i>
 
-            </p>
+              </h2>
+
+
+
+              <p className="text-[#282828] text-[16px] md:text-[20px] leading-[32px] md:leading-[38px] font-normal">
+
+                Register and mark your calendar for an enriching experience
+
+              </p>
+
+            </div>
+
+
+
+            {/* View All Events Button */}
+            <div className="hidden md:flex items-start shrink-0 pt-24 pr-12 lg:pr-20">
+
+              <button className="group border border-[#6B3B22] text-[#6B3B22] px-5 py-2.5 rounded-full text-[16px] font-medium flex items-center gap-5 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white">
+
+                View All Events
+
+                <span className="w-8 h-8 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
+
+                  <ArrowRight size={16} />
+
+                </span>
+
+              </button>
+
+            </div>
 
           </div>
 
 
 
-          {/* Right */}
-          <div className="flex items-center justify-between md:flex-col md:items-end gap-6">
+          {/* Desktop Arrows */}
+          <div className="hidden md:flex justify-end items-center gap-4 mt-8">
 
-            <button className="group border border-[#6B3B22] text-[#6B3B22] px-5 py-2.5 rounded-full text-[16px] font-medium flex items-center gap-5 hover:bg-[#6B3B22] hover:text-white transition-all duration-300 bg-white">
+            <button
+              onClick={prevSlide}
+              className="w-12 h-12 rounded-full border border-[#C9B8A2] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
+            >
 
-              View All Events
-
-              <span className="w-8 h-8 rounded-full bg-[#6B3B22] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#6B3B22] transition-all duration-300">
-
-                <ArrowRight size={16} />
-
-              </span>
+              <ChevronLeft size={20} />
 
             </button>
 
 
 
-            {/* Desktop Arrows */}
-            <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
+            >
 
-              <button
-                onClick={prevSlide}
-                className="w-12 h-12 rounded-full border border-[#C9B8A2] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
-              >
+              <ChevronRight size={20} />
 
-                <ChevronLeft size={20} />
-
-              </button>
-
-
-
-              <button
-                onClick={nextSlide}
-                className="w-12 h-12 rounded-full border border-[#6B3B22] flex items-center justify-center hover:bg-[#6B3B22] hover:text-white transition"
-              >
-
-                <ChevronRight size={20} />
-
-              </button>
-
-            </div>
+            </button>
 
           </div>
 
@@ -220,7 +225,7 @@ export default function Programs() {
               <img
                 src={current.image}
                 alt={current.title}
-                className="w-full h-full object-cover"
+                className="w-full min-h-[548px] object-cover"
               />
 
 
@@ -271,7 +276,7 @@ export default function Programs() {
 
 
                 {/* Description */}
-                <p className="text-[#555] leading-[54px] mb-12 max-w-md text-[18px]">
+                <p className="text-[#555] leading-[38px] mb-10 max-w-md text-[18px]">
 
                   {current.description}
 
@@ -347,7 +352,7 @@ export default function Programs() {
                 <img
                   src={next.image}
                   alt={next.title}
-                  className="w-full h-[548px] object-cover"
+                  className="w-full min-h-[548px] object-cover"
                 />
 
               </div>
